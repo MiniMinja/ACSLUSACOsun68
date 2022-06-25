@@ -22,16 +22,31 @@ public class _1920jrc2 {
 	}
 	
 	public static void solve() {
-		a = delete2ndCons(a);
-		b = delete2ndCons(b);
-		System.out.println(a + " "  + b);
+		//delete 2nd cons
 		
-		int l = Math.min(a.length(), b.length());
-		for(int i = 0;i<l;i++) {
-			if(a.charAt(i) == b.charAt(i)) {
-				a = deleteChar(a, i);
-				b = deleteChar(b, i);
-				i--;
+		//delete all vowels
+		
+		//delete chars in like positions LR
+		int index = 0;
+		while(index <= Math.min(a.length(), b.length())) {
+			if(a.charAt(index) == b.charAt(index)) {
+				a = deleteChar(a, index);
+				b = deleteChar(b, index);
+			}
+			else {
+				index++;
+			}
+		}
+		
+		//delete chars in like positions LR
+		index = 0;
+		while(index <= Math.min(a.length(), b.length())) {
+			if(a.charAt(a.length()-1-index) == b.charAt(b.length()-1-index)) {
+				a = deleteChar(a, index);
+				b = deleteChar(b, index);
+			}
+			else {
+				index++;
 			}
 		}
 	}
@@ -40,12 +55,10 @@ public class _1920jrc2 {
 		System.out.println(output);
 	}
 	
-	public static String delete2ndCons(String a) {
-		return null;
-	}
-	
 	public static String deleteChar(String s, int i) {
-		
+		String l = s.substring(0, i);
+		String r = s.substring(i + 1);
+		return l + r;
 	}
 	
 }
